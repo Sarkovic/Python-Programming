@@ -1,0 +1,137 @@
+Sun,Proxima Centauri,643
+Sun,Lalande 21185,1059
+Sun,Lacaille 9352,1194
+Sun,Luyten's Star,1251
+Sun,YZ Ceti,1766
+Sun,Tau Ceti,3042
+Sun,Gliese 1061,2773
+Sun,Wolf 1061,2501
+Sun,Gliese 876,2710
+Sun,82 G. Eridani,3247
+Sun,Gliese 581,2306
+Proxima Centauri,Sun,711
+Proxima Centauri,Lalande 21185,558
+Proxima Centauri,Lacaille 9352,1357
+Proxima Centauri,Luyten's Star,1351
+Proxima Centauri,YZ Ceti,2273
+Proxima Centauri,Tau Ceti,2719
+Proxima Centauri,Gliese 1061,2940
+Proxima Centauri,Wolf 1061,2890
+Proxima Centauri,Gliese 876,2490
+Proxima Centauri,82 G. Eridani,2730
+Proxima Centauri,Gliese 581,2751
+Lalande 21185,Sun,988
+Lalande 21185,Proxima Centauri,709
+Lalande 21185,Lacaille 9352,1595
+Lalande 21185,Luyten's Star,1640
+Lalande 21185,YZ Ceti,2472
+Lalande 21185,Tau Ceti,2902
+Lalande 21185,Gliese 1061,3138
+Lalande 21185,Wolf 1061,3127
+Lalande 21185,Gliese 876,2070
+Lalande 21185,82 G. Eridani,2368
+Lalande 21185,Gliese 581,2858
+Lacaille 9352,Sun,1203
+Lacaille 9352,Proxima Centauri,1357
+Lacaille 9352,Lalande 21185,1657
+Lacaille 9352,Luyten's Star,337
+Lacaille 9352,YZ Ceti,2511
+Lacaille 9352,Tau Ceti,2095
+Lacaille 9352,Gliese 1061,1967
+Lacaille 9352,Wolf 1061,2751
+Lacaille 9352,Gliese 876,3460
+Lacaille 9352,82 G. Eridani,3489
+Lacaille 9352,Gliese 581,2984
+Luyten's Star,Sun,1312
+Luyten's Star,Proxima Centauri,1239
+Luyten's Star,Lalande 21185,1677
+Luyten's Star,Lacaille 9352,293
+Luyten's Star,YZ Ceti,2531
+Luyten's Star,Tau Ceti,2212
+Luyten's Star,Gliese 1061,2015
+Luyten's Star,Wolf 1061,2829
+Luyten's Star,Gliese 581,2913
+YZ Ceti,Sun,1791
+YZ Ceti,Proxima Centauri,2178
+YZ Ceti,Lalande 21185,2511
+YZ Ceti,Lacaille 9352,2519
+YZ Ceti,Luyten's Star,2351
+YZ Ceti,Gliese 1061,3498
+YZ Ceti,Wolf 1061,1156
+YZ Ceti,Gliese 876,3403
+YZ Ceti,Gliese 581,698
+Tau Ceti,Sun,3021
+Tau Ceti,Proxima Centauri,2750
+Tau Ceti,Lalande 21185,2935
+Tau Ceti,Lacaille 9352,2250
+Tau Ceti,Luyten's Star,2151
+Tau Ceti,Gliese 1061,1961
+Tau Ceti,HD 219134,3461
+Tau Ceti,61 Virginis,3320
+Tau Ceti,Gliese 357,2985
+Gliese 1061,Sun,2762
+Gliese 1061,Proxima Centauri,2906
+Gliese 1061,Lalande 21185,3116
+Gliese 1061,Lacaille 9352,1881
+Gliese 1061,Luyten's Star,1837
+Gliese 1061,YZ Ceti,3475
+Gliese 1061,Tau Ceti,1988
+Wolf 1061,Sun,2511
+Wolf 1061,Proxima Centauri,2932
+Wolf 1061,Lalande 21185,3166
+Wolf 1061,Lacaille 9352,2730
+Wolf 1061,Luyten's Star,2736
+Wolf 1061,YZ Ceti,1060
+Wolf 1061,Gliese 581,1162
+Gliese 876,Sun,2722
+Gliese 876,Proxima Centauri,2446
+Gliese 876,Lalande 21185,2198
+Gliese 876,YZ Ceti,3373
+Gliese 876,82 G. Eridani,2531
+Gliese 876,Gliese 581,3444
+Gliese 876,Gliese 433,3108
+82 G. Eridani,Sun,3130
+82 G. Eridani,Proxima Centauri,2697
+82 G. Eridani,Lalande 21185,2545
+82 G. Eridani,Lacaille 9352,3427
+82 G. Eridani,Luyten's Star,3498
+82 G. Eridani,Gliese 876,2421
+Gliese 581,Sun,2344
+Gliese 581,Proxima Centauri,2604
+Gliese 581,Lalande 21185,2835
+Gliese 581,Lacaille 9352,3017
+Gliese 581,Luyten's Star,3001
+Gliese 581,YZ Ceti,672
+Gliese 581,Wolf 1061,1047
+Gliese 581,Gliese 876,3385
+Gliese 581,Gliese 667 C,3271
+Gliese 667 C,Gliese 581,3336
+HD 219134,61 Virginis,971
+HD 219134,Gliese 357,658
+61 Virginis,Tau Ceti,3280
+61 Virginis,HD 219134,847
+61 Virginis,Gliese 357,780
+Gliese 433,Gliese 876,3224
+Gliese 357,Tau Ceti,2960
+Gliese 357,HD 219134,669
+Gliese 357,61 Virginis,828
+HD 69830,Upsilon Andromedae,30100
+55 Cancri,HD 69830,21977
+TRAPPIST-1,55 Cancri,26060
+TRAPPIST-1,Sun,10480
+TRAPPIST-1,Proxima Centauri,9995
+TRAPPIST-1,Lalande 21185,9964
+TRAPPIST-1,Lacaille 9352,10144
+TRAPPIST-1,Luyten's Star,10284
+TRAPPIST-1,YZ Ceti,12128
+TRAPPIST-1,Tau Ceti,8760
+TRAPPIST-1,Gliese 1061,10508
+TRAPPIST-1,Wolf 1061,12662
+TRAPPIST-1,Gliese 876,10178
+TRAPPIST-1,82 G. Eridani,8036
+TRAPPIST-1,Gliese 581,12373
+TRAPPIST-1,Gliese 667 C,14575
+TRAPPIST-1,HD 219134,6178
+TRAPPIST-1,61 Virginis,6722
+TRAPPIST-1,Gliese 433,9349
+TRAPPIST-1,Gliese 357,6306
