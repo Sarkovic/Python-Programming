@@ -69,3 +69,111 @@ print(bikes)
 
 # Length of the list
 print(len(bikes))
+
+for bike in bikes:
+    print(f"{bike.title()} is great!!")
+
+pizzas = ['pepperoni pizza', 'four seasons pizza', 'cheese pizza']
+
+for pizza in pizzas:
+    print(f"I like {pizza}.")
+print("I really love pizza!")
+
+animals = ['dog', 'cat', 'rabbit', 'hamster']
+
+for animal in animals:
+    print(f"A {animal} would make a great pet.")
+print("Any of these animals would make a great pet!")
+
+numbers = list(range(0, 11, 2))
+print(numbers)
+
+squares = []
+for value in range(1, 11):
+    # square = value ** 2
+    squares.append(value ** 2)
+
+print(squares)
+print(max(squares))
+print(min(squares))
+print(sum(squares))
+
+squares_two = [value ** 3 for value in range(1, 11)]
+print(squares_two)
+
+one_million = list(range(1, 1000000))
+print(sum(one_million))
+
+burgers = ['chicken', 'beef', 'cheese', 'naga', 'sausage', 'ginger']
+print("The first three items in the list are:")
+print(burgers[:3])
+print("The items from the middle of the list are:")
+print(burgers[1:4])
+print("The last three items in the list are:")
+print(burgers[-3:])
+
+friend_burgers = burgers[:]
+
+print(friend_burgers)
+
+burgers.append('bbq chicken')
+print(burgers)
+friend_burgers.append('spicy beef')
+print(friend_burgers)
+
+dimensions = (200, 50)
+print(dimensions[0])
+print(dimensions[1])
+
+# Although we cannot modify a tuple, we can assign a new value to a
+# variable that represents  a tuple
+print("Original dimensions:")
+for dimension in dimensions:
+    print(dimension)
+
+dimensions = (400, 100)
+print("Modified dimensions:")
+for dimension in dimensions:
+    print(dimension)
+
+
+# Dictionaries
+alien_0 = {'color': 'green',
+           'points': 5}
+print(alien_0['color'])
+print(alien_0['points'])
+print(alien_0)
+
+# adding new key-value pair in a dictionary
+alien_0['x_position'] = 0
+alien_0['y_position'] = 25
+print(alien_0)
+
+person = {
+    'first_name': 'Sadi',
+    'last_name': 'Rahman',
+    'age': 23,
+    'city': 'Dhaka'
+}
+
+print(person)
+
+favorite_color = {
+    'Subhey': 'Black',
+    'Nodi': 'Green',
+    'Konku': 'Red',
+    'Megho': 'Pink',
+    'Aungshu': 'Blue'
+}
+
+for name, color in favorite_color.items():
+    print(f"Key: {name}")
+    print(f"Value: {color}\n")
+
+print(favorite_color.keys())
+print(favorite_color.values())
+
+# A list of dictionaries
+alien_0 = {'color': 'green', 'points': 5}
+alien_1 = {'color': 'blue', 'points': 9}
+alien_2 = {'color': 'red', 'points': 4}
