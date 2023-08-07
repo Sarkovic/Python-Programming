@@ -1,0 +1,46 @@
+Problem: Sorting a list in ascending order
+Algorithm: Hill Climbing (Steepest ascent)
+
+#Init():
+	initialize a list -> [2, 1, 5, 0, 8, 4, 10, 0, 20, 10]
+
+#calc_cost(state):
+	# You will require a nested for loop
+	for each element of the list:
+		look forward in the list and see how many elements are smaller than this element (they are in the wrong order)
+	Add up the number of disorders and return
+	
+###### for simulated annealing, you need to change this function
+#State_generation(current_state, current_state cost):
+	# You will need a nested for loop
+	for each element in the list:
+		swap with the forward elements of the list with this element one by one and generate one state for each swap.
+		calculate cost for each generated state using calc_cost() function.
+	# Do not store the states and the corresponding costs to determine smallest cost state
+	# Rather use check and replace by last smallest cost state approach in the above nested loop (think about minimum number #determination from array)
+	take that state which has the smallest cost
+	if cost is smaller than current_state cost:
+		return that state along with the new cost 
+	else :
+		return current_state, None
+		 
+
+#goal_test(state):
+	if calc_cost(state) == 0:
+		return True
+	else:
+		retrun False
+		
+#main():
+	state = init()
+	while(!goal_test(state)):
+		state, cost = State_generation(state, cost)
+		# When you are stuck, your cost will be None 
+		if cost is None:
+			print(state)
+			FINISH
+	print(state)
+	FINISH
+	
+
+		
