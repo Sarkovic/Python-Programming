@@ -177,3 +177,5 @@ print(favorite_color.values())
 alien_0 = {'color': 'green', 'points': 5}
 alien_1 = {'color': 'blue', 'points': 9}
 alien_2 = {'color': 'red', 'points': 4}
+
+print(f"{(22/7): .5f}")
