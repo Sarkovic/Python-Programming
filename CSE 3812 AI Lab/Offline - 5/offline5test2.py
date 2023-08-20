@@ -2,9 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def k_means_clustering(data, k):
-    n = data.shape[0]
-    cluster_centers = data[np.random.choice(n, k, replace=False)]
+def k_means_clustering(dataset, k):
+    n = dataset.shape[0]
+
+    cluster_centers = dataset[np.random.choice(n, k, replace=False)]
 
     clusters = [[] for _ in range(cluster_centers.shape[0])]
     temp_clusters = [[] for _ in range(cluster_centers.shape[0])]
@@ -13,28 +14,31 @@ def k_means_clustering(data, k):
 
     while True:
         temp_clusters = [[] for _ in range(cluster_centers.shape[0])]
+        distance = np.zeros((n, k))
+        for i in range(k):
+            distance[:, i] = ((dataset - cluster_centers[i]) ** 2).sum(axis=1) ** 0.5
 
-        distances = np.linalg.norm(data[:, np.newaxis, :] - cluster_centers, axis=2)
+        # Keep the minimum distance
+        closest_center_indices = np.argmin(distance, axis=1)
 
-        closest_center_indices = np.argmin(distances, axis=1)
         for sample_idx, center_idx in enumerate(closest_center_indices):
+            # Append sample index in the ith list of temporary clusters
             temp_clusters[center_idx].append(sample_idx)
 
-        for cluster_idx, cluster_samples in enumerate(temp_clusters):
-            if len(cluster_samples) > 0:
-                new_center = np.mean(data[cluster_samples], axis=0)
-                cluster_centers[cluster_idx] = new_center
+        # Calculate new centers by determining the average
+        for i in range(k):
+            cluster_centers[i] = dataset[closest_center_indices == i].mean(axis=0)
 
         iteration += 1
 
         if iteration > 1:
-            shifts = np.zeros(data.shape[0], dtype=bool)
+            shifts = np.zeros(dataset.shape[0], dtype=bool)
 
-            for idx, sample in enumerate(data):
+            for idx, sample in enumerate(dataset):
                 old_cluster = np.where([idx in cluster_samples for cluster_samples in clusters])[0]
                 new_cluster = np.where([idx in cluster_samples for cluster_samples in temp_clusters])[0]
 
-                if old_cluster != new_cluster:
+                if clusters != temp_clusters:
                     shifts[idx] = True
 
             shift_count = np.sum(shifts)
@@ -45,18 +49,8 @@ def k_means_clustering(data, k):
 
         clusters = temp_clusters.copy()
 
-    colors = ['r', 'g', 'b', 'c', 'm', 'y']
-
-    for cluster_idx, cluster_samples in enumerate(clusters):
-        color = colors[cluster_idx % len(colors)]
-        plt.scatter(data[cluster_samples, 0], data[cluster_samples, 1], c=color, marker='o', alpha=0.5)
-
-    for center_idx, center in enumerate(cluster_centers):
-        plt.scatter(center[0], center[1], c='k', marker='X', s=100)
-
-    plt.xlabel('Feature 1')
-    plt.ylabel('Feature 2')
-    plt.title('K-Means Clustering')
+    plt.scatter(dataset[:, 0], dataset[:, 1], c=closest_center_indices)
+    plt.scatter(cluster_centers[:, 0], cluster_centers[:, 1], marker='*')
     plt.show()
 
 
