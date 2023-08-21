@@ -5,10 +5,13 @@ import struct
 def resolve_dns(domain_name, dns_server):
     # Create a UDP socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    client_socket.settimeout(5)  # Set a timeout for receiving responses
+    # Set a timeout for receiving responses
+    client_socket.settimeout(5)
 
     # Build the DNS query
-    query_id = 12345  # Choose any query ID you like
+
+    # Choose any query ID you like
+    query_id = 12345
     query = build_dns_query(domain_name, query_id)
 
     while True:
