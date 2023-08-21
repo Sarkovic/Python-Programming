@@ -1,6 +1,7 @@
 import socket
 import struct
 
+
 def resolve_dns(domain_name, dns_server):
     # Create a UDP socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -42,6 +43,7 @@ def resolve_dns(domain_name, dns_server):
     client_socket.close()
     return []
 
+
 def build_dns_query(domain_name, query_id):
     # Build the DNS query message as per the DNS protocol
     # This involves constructing the header and question section
@@ -61,6 +63,7 @@ def build_dns_query(domain_name, query_id):
 
     query = header + qname + qtype + qclass
     return query
+
 
 def parse_dns_response(response):
     # Parse the DNS response to extract IP addresses, CNAME, and NS records from the answer section
@@ -84,16 +87,17 @@ def parse_dns_response(response):
             ip_address = socket.inet_ntoa(answer_section[12:16])
             ip_addresses.append(ip_address)
         elif qtype == 5 and qclass == 1:  # CNAME record and IN class
-            canonical_name = answer_section[12:12+rdlength]
+            canonical_name = answer_section[12:12 + rdlength]
         answer_section = answer_section[12 + rdlength:]
 
     for _ in range(nscount):
         name, qtype, qclass, ttl, rdlength = struct.unpack('!HHHLH', answer_section[:12])
         if qtype == 2 and qclass == 1:  # NS record and IN class
-            name_server = answer_section[12:12+rdlength]
+            name_server = answer_section[12:12 + rdlength]
         answer_section = answer_section[12 + rdlength:]
 
     return ip_addresses, canonical_name, name_server
+
 
 if __name__ == "__main__":
     domain_name = input("Enter a domain name: ")
