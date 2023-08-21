@@ -74,14 +74,19 @@ def parse_dns_response(response):
     ancount = header[3]
     nscount = header[4]
 
+    # Finds the end of the domain name in the DNS question
     domain_name_end = response.find(b'\x00', 12) + 1
-    answer_section = response[domain_name_end + 4:]  # Skip over the question section
+    # Skip over the question section and goes to the start of the answer
+    answer_section = response[domain_name_end + 4:]
 
+    # Empty list to store the ip addresses
     ip_addresses = []
+    # Both CNAME and NS is initialized to none, if found we store it here
     canonical_name = None
     name_server = None
 
     for _ in range(ancount):
+        # Unpacking the DNS response in short fields
         name, qtype, qclass, ttl, rdlength = struct.unpack('!HHHLH', answer_section[:12])
         if qtype == 1 and qclass == 1:  # A record and IN class
             ip_address = socket.inet_ntoa(answer_section[12:16])
@@ -108,3 +113,10 @@ if __name__ == "__main__":
         print("Resolved IP addresses:", ip_addresses)
     else:
         print("DNS resolution failed")
+
+# Test:
+# outlook.office365.com
+# substrate.office.com
+# server.events.data.microsoft.com
+# dns.msftncsi.com
+
