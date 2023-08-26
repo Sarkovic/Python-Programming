@@ -1,5 +1,6 @@
 import socket
 import struct
+import csv
 
 
 def resolve_dns(domain_name, dns_server):
@@ -28,11 +29,9 @@ def resolve_dns(domain_name, dns_server):
             if ip_addresses:
                 return ip_addresses
             elif canonical_name:
-                print(canonical_name)
                 domain_name = canonical_name.decode()
                 query = build_dns_query(domain_name, query_id)
             elif name_server:
-                print(name_server)
                 # Convert an ip address of 32 bits binary format into string format
                 dns_server = socket.inet_ntoa(name_server)
                 query = build_dns_query(domain_name, query_id)
@@ -111,15 +110,69 @@ if __name__ == "__main__":
     domain_name = input("Enter a domain name: ")
     dns_server = "8.8.8.8"  # Google Public DNS
 
-    ip_addresses = resolve_dns(domain_name, dns_server)
-    if ip_addresses:
-        print("Resolved IP addresses:", ip_addresses)
-    else:
-        print("DNS resolution failed")
+    field_names = ['DOMAIN', 'IP ADDRESS']
+
+    # file = open("resolved_dns.txt", "a")
+    #
+    # if domain_name in file.readlines():
+    #     print("Found in cache_file!")
+    #     print()
+
+    ip_address = [{'DOMAIN': domain_name, 'IP ADDRESS': resolve_dns(domain_name, dns_server)}]
+
+    with open('resolved_dns.csv', 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        # writer.writeheader()
+        # writer.writerows(ip_address)
+        csv_writer.writerow(['DOMAIN', 'IP ADDRESS'])
+
+    # if ip_addresses:
+    #     print("Resolved IP addresses:", ip_addresses)
+    # else:
+    #     print("DNS resolution failed")
 
 # Test:
 # outlook.office365.com
 # substrate.office.com
 # server.events.data.microsoft.com
 # dns.msftncsi.com
-
+# a.root-servers.net
+# 	198.41.0.4, 2001:503:ba3e::2:30
+# 	Verisign, Inc.
+# b.root-servers.net
+# 	199.9.14.201, 2001:500:200::b
+# 	University of Southern California,
+# Information Sciences Institute
+# c.root-servers.net
+# 	192.33.4.12, 2001:500:2::c
+# 	Cogent Communications
+# d.root-servers.net
+# 	199.7.91.13, 2001:500:2d::d
+# 	University of Maryland
+# e.root-servers.net
+# 	192.203.230.10, 2001:500:a8::e
+# 	NASA (Ames Research Center)
+# f.root-servers.net
+# 	192.5.5.241, 2001:500:2f::f
+# 	Internet Systems Consortium, Inc.
+# g.root-servers.net
+# 	192.112.36.4, 2001:500:12::d0d
+# 	US Department of Defense (NIC)
+# h.root-servers.net
+# 	198.97.190.53, 2001:500:1::53
+# 	US Army (Research Lab)
+# i.root-servers.net
+# 	192.36.148.17, 2001:7fe::53
+# 	Netnod
+# j.root-servers.net
+# 	192.58.128.30, 2001:503:c27::2:30
+# 	Verisign, Inc.
+# k.root-servers.net
+# 	193.0.14.129, 2001:7fd::1
+# 	RIPE NCC
+# l.root-servers.net
+# 	199.7.83.42, 2001:500:9f::42
+# 	ICANN
+# m.root-servers.net
+# 	202.12.27.33, 2001:dc3::35
+# 	WIDE Project
