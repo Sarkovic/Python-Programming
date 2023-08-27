@@ -2,7 +2,7 @@ import csv
 import socket
 import struct
 
-CACHE_FILE = "domain_cache.csv"
+CACHE_FILE = "Final Term Project/domain_cache.csv"
 
 
 def resolve_domain(cache, domain_name, dns_server):
