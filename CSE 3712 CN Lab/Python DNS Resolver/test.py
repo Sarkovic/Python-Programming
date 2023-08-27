@@ -1,54 +1,49 @@
-import csv
 import socket
 import struct
+import csv
 
-CACHE_FILE = "domain_cache.csv"
 
+def resolve_dns(domain_name, dns_server):
+    # Create a UDP socket
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # Set a timeout for receiving responses
+    client_socket.settimeout(5)
 
-def resolve_domain(cache, domain_name, dns_server):
-    if domain_name in cache:
-        print(f"Domain '{domain_name}' found in cache.")
-        return cache[domain_name]
-    else:
-        # Create a UDP socket
-        client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        # Set a timeout for receiving responses
-        client_socket.settimeout(5)
+    # Build the DNS query
 
-        # Build the DNS query
-        query_id = 12345
-        query = build_dns_query(domain_name, query_id)
+    # Choose any query ID you like
+    query_id = 12345
+    query = build_dns_query(domain_name, query_id)
 
-        while True:
-            try:
-                # Send the DNS query to the DNS server
-                client_socket.sendto(query, (dns_server, 53))
+    while True:
+        try:
+            # Send the DNS query to the DNS server
+            client_socket.sendto(query, (dns_server, 53))
 
-                # Receive the DNS response
-                response, server_address = client_socket.recvfrom(1024)
+            # Receive the DNS response
+            response, server_address = client_socket.recvfrom(1024)
 
-                # Parse the DNS response
-                ip_addresses, canonical_name, name_server = parse_dns_response(response)
+            # Parse the DNS response
+            ip_addresses, canonical_name, name_server = parse_dns_response(response)
 
-                if ip_addresses:
-                    add_entry(cache, domain_name, ip_addresses)
-                    return ip_addresses
-                elif canonical_name:
-                    domain_name = canonical_name.decode()
-                    query = build_dns_query(domain_name, query_id)
-                elif name_server:
-                    # Convert an ip address of 32 bits binary format into string format
-                    dns_server = socket.inet_ntoa(name_server)
-                    query = build_dns_query(domain_name, query_id)
-                else:
-                    break
-
-            except socket.timeout:
-                print("DNS resolution timed out")
+            if ip_addresses:
+                return ip_addresses
+            elif canonical_name:
+                domain_name = canonical_name.decode()
+                query = build_dns_query(domain_name, query_id)
+            elif name_server:
+                # Convert an ip address of 32 bits binary format into string format
+                dns_server = socket.inet_ntoa(name_server)
+                query = build_dns_query(domain_name, query_id)
+            else:
                 break
 
-        client_socket.close()
-        return []
+        except socket.timeout:
+            print("DNS resolution timed out")
+            break
+
+    client_socket.close()
+    return []
 
 
 def build_dns_query(domain_name, query_id):
@@ -111,46 +106,15 @@ def parse_dns_response(response):
     return ip_addresses, canonical_name, name_server
 
 
-def load_cache():
-    cache = {}
-    try:
-        with open(CACHE_FILE, 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                domain, *ips = row
-                cache[domain] = ips
-    except FileNotFoundError:
-        pass
-    return cache
-
-
-def save_cache(cache):
-    with open(CACHE_FILE, 'w', newline='') as file:
-        writer = csv.writer(file)
-        for domain, ips in cache.items():
-            writer.writerow([domain] + ips)
-
-
-def add_entry(cache, domain, ip):
-    if domain in cache:
-        if ip not in cache[domain]:
-            cache[domain].append(ip)
-    else:
-        cache[domain] = [ip]
-    save_cache(cache)
-
-
 if __name__ == "__main__":
-    loaded_cache = load_cache()
+    domain_name = input("Enter a domain name: ")
+    dns_server = "8.8.8.8"  # Google Public DNS
 
-    input_domain = input("Enter a domain name: ")
-    given_dns_server = "8.8.8.8"
-    ip_addresses_found = resolve_domain(loaded_cache, input_domain, given_dns_server)
-
-    if ip_addresses_found:
-        print(f"IPs for {input_domain}: {', '.join(ip_addresses_found)}")
+    ip_addresses = resolve_dns(domain_name, dns_server)
+    if ip_addresses:
+        print("Resolved IP addresses:", ip_addresses)
     else:
-        print(f"DNS resolution for {input_domain} failed")
+        print("DNS resolution failed")
 
 # Test:
 # outlook.office365.com

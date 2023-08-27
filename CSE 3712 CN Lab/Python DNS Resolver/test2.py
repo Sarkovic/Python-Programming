@@ -141,16 +141,17 @@ def add_entry(cache, domain, ip):
 
 
 if __name__ == "__main__":
-    loaded_cache = load_cache()
+    cache = load_cache()
 
-    input_domain = input("Enter a domain name: ")
-    given_dns_server = "8.8.8.8"
-    ip_addresses_found = resolve_domain(loaded_cache, input_domain, given_dns_server)
+    domain_name = input("Enter a domain name: ")
+    dns_server = "8.8.8.8"
+    ip_addresses = resolve_domain(cache, domain_name, dns_server)
 
-    if ip_addresses_found:
-        print(f"IPs for {input_domain}: {', '.join(ip_addresses_found)}")
+    if ip_addresses:
+        print(f"IPs for {domain_name}: {', '.join(ip_addresses)}")
     else:
-        print(f"DNS resolution for {input_domain} failed")
+        print(f"DNS resolution for {domain_name} failed")
+
 
 # Test:
 # outlook.office365.com
