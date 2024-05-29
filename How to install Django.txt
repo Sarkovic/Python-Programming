@@ -1,0 +1,20 @@
+How to install Django:
+1. Go to cmd
+2. "pip install pipenv"
+3. install Python extension in VSCode
+
+Create and open Django project:
+1. Go to the desired folder e.g. DjangoProgramming
+2. Open the folder in terminal/cmd
+3. "pipenv install django"
+4. There will be a Virtual Environment location
+5. Go to DjangoProgramming folder and open it in the vscode
+6. In VSCode terminal: "pipenv shell"
+7. "django-admin"
+8. "django-admin startproject demoprojectone"	// Redundant folders
+9. "django-admin startproject demoprojectone ."
+10. python manage.py
+11. python manage.py runserver
+12. Go to VSCode Command Palette
+13. Python: Select Interpreter
+14. Choose the ".virtualenvs" environment
